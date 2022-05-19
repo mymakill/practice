@@ -40,3 +40,62 @@ let personalMovieDB = {
 personalMovieDB.movies[answearOneMovie] = answerOneGoal;
 personalMovieDB.movies[answearTwoMovie] = answerTwoGoal;
 console.log (personalMovieDB);
+
+
+// Вложенность циклов или цикл в цикле
+// *
+// **
+// ***
+// ****
+// *****
+// ******
+
+// let result = '';
+// const lenght = 7;
+
+// for (let i = 1; i < lenght; i++) {
+//     for (let j = 0; j < i; j++) {
+//         result += '*';
+//     }
+//     result += '\n';
+// }
+// console.log (result);
+
+
+// Копирование массива
+// function firstTask() {
+//     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
+//     const arr = [3, 5, 8, 16, 20, 23, 50];
+//     const result = [];
+
+//     for (let i = 0; i < arr.length; i++) {
+//             result[i] = arr[i]; 
+//         }
+//         console.log(result);
+//     }
+
+
+// Изменить данный массив так, чтобы все числа были увеличены в 2 раза, а если 
+// попадается строка - прибавить к ней "-done"
+
+    // const data = [5, 10, 'Shopping', 20, 'Homework'];
+
+    // for (let i = 0; i < data.length; i++) {
+    //     if (typeof(data[i]) == 'number') {
+    //         data[i] = data[i] * 2;           
+    //     } else {
+    //         data[i] = data[i] + '-done';
+    //     }    
+    // }
+    // console.log(data);
+
+
+// Развернуть массив наизнанку
+
+    const data = [5, 10, 'Shopping', 20, 'Homework'];
+    const result = [];
+
+    for (let i = 1; i <= data.length; i++) {
+        result[i - 1] = data[data.length - i]; 
+    }
+    console.log(result);
