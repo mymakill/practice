@@ -134,3 +134,54 @@ return str;
 
 console.log(getMathResult(5, 3));
 
+
+
+function calculateVolumeAndArea(length) {
+  const cubeVolume = length * length * length,
+        cubeArea = 6 * (length * length);
+  if(typeof(length) !== 'number' || length <= 0 || !Number.isInteger(length)) {
+    return('При вычислении произошла ошибка');
+  }
+  return(`Объем куба: ${cubeVolume}, площадь всей поверхности: ${cubeArea}`);
+}
+calculateVolumeAndArea();
+
+
+function getCoupeNumber(seatNumber) {
+  if(typeof(seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)) {
+    return ('Ошибка. Проверьте правильность введенного номера места');
+  }
+
+  if (seatNumber === 0 || seatNumber > 36) {
+    return ('Таких мест в вагоне не существует');
+  }
+
+  for(let i = 4; i <= 36; i = i + 4) {
+    return Math.ceil(seatNumber / i);
+  }
+}
+console.log(getCoupeNumber(13));
+
+
+// Преобразует число в x часов и y минут
+function getTimeFromMinutes(minutes) {
+  if(typeof(minutes) !== 'number' || minutes < 0 || !Number.isInteger(minutes)) {
+    return('Ошибка, проверьте данные');
+  }
+
+  if(minutes === 0) {
+    return('Это 0 часов и 0 минут');
+  }
+
+  for(let i = 60; i < 600; i = i + 60) {
+    if(Math.trunc(minutes / i) === 1) {
+      return(`${Math.trunc(minutes / i)} час и ${minutes % i} минут`);
+    } else if (Math.trunc(minutes / i) === 2 || Math.trunc(minutes / i) === 3 || Math.trunc(minutes / i) === 4) {
+        return(`${Math.trunc(minutes / i)} часа и ${minutes % i} минут`);
+    } else {
+      return(`${Math.trunc(minutes / i)} часов и ${minutes % i} минут`);
+    }
+  }
+}
+
+console.log(getTimeFromMinutes(100));
