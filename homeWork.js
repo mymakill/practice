@@ -175,13 +175,57 @@ function getTimeFromMinutes(minutes) {
 
   for(let i = 60; i < 600; i = i + 60) {
     if(Math.trunc(minutes / i) === 1) {
-      return(`${Math.trunc(minutes / i)} час и ${minutes % i} минут`);
+      return(`Это ${Math.trunc(minutes / i)} час и ${minutes % i} минут`);
     } else if (Math.trunc(minutes / i) === 2 || Math.trunc(minutes / i) === 3 || Math.trunc(minutes / i) === 4) {
-        return(`${Math.trunc(minutes / i)} часа и ${minutes % i} минут`);
+        return(`Это ${Math.trunc(minutes / i)} часа и ${minutes % i} минут`);
     } else {
-      return(`${Math.trunc(minutes / i)} часов и ${minutes % i} минут`);
+      return(`Это ${Math.trunc(minutes / i)} часов и ${minutes % i} минут`);
     }
   }
 }
 
 console.log(getTimeFromMinutes(100));
+
+
+
+// Функция принимает в себя 4 числа и возвращает самое большое из них
+
+function findMaxNumber(a, b, c, d) {
+  if (typeof(a) !== 'number' || typeof(b) !== 'number' || 
+      typeof(c) !== 'number' || typeof(d) !== 'number') {
+    return(0);
+  } else {
+    return Math.max(a, b, c, d);
+  }
+}
+
+console.log(findMaxNumber(1, 2, 15, 4));
+
+
+// Функция принимает в себя один аргумент и возвращает строку, в которой 
+// будут выведены по порядку числа Фибоначчи
+
+function fib(num) {
+ if (typeof(num) !== 'number' || num <= 0 || !Number.isInteger(num)) {
+   return ('');
+ }
+
+ let result = '';
+ let first = 0;
+ let second = 1;
+
+ for (let i = 0; i < num; i++) {
+   if (i + 1 === num) {
+     result += `${first}`;
+   } else {
+     result += `${first} `;
+   }
+
+   let third = first + second;
+       first = second;
+       second = third; 
+ }
+ return result;
+}
+
+console.log(fib(6));
