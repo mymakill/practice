@@ -28,42 +28,42 @@ P.S. Функции вызывать не обязательно*/
 
 "use strict";
 
-let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+// let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
 
 
-let personalMovieDB = {
-  count: numberOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  private: false
-};
+// let personalMovieDB = {
+//   count: numberOfFilms,
+//   movies: {},
+//   actors: {},
+//   genres: [],
+//   private: false
+// };
 
 
-if (personalMovieDB.count <= 10) {
-  console.log("Просмотрено довольно мало фильмов");
-} else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
-  console.log("Вы классический зритель");
-} else if (personalMovieDB.count > 30) {
-  console.log("Вы киноман");
-} else {
-  console.log("Произошла ошибка");
-}
+// if (personalMovieDB.count <= 10) {
+//   console.log("Просмотрено довольно мало фильмов");
+// } else if (personalMovieDB.count > 10 && personalMovieDB.count < 30) {
+//   console.log("Вы классический зритель");
+// } else if (personalMovieDB.count > 30) {
+//   console.log("Вы киноман");
+// } else {
+//   console.log("Произошла ошибка");
+// }
 
 
-for (let i = 0; i < 2; i++) {
-  const answearMovie = prompt('Один из последних просмотренных фильмов?', ''),
-        answerGoal = prompt('На сколько оцените его?', '');
+// for (let i = 0; i < 2; i++) {
+//   const answearMovie = prompt('Один из последних просмотренных фильмов?', ''),
+//         answerGoal = prompt('На сколько оцените его?', '');
 
-  if (answearMovie != null && answerGoal != null && answearMovie != '' && answerGoal != '' && answearMovie.length < 50) {
-    personalMovieDB.movies[answearMovie] = answerGoal;
-  } else {
-    i--;
-  }
-}
+//   if (answearMovie != null && answerGoal != null && answearMovie != '' && answerGoal != '' && answearMovie.length < 50) {
+//     personalMovieDB.movies[answearMovie] = answerGoal;
+//   } else {
+//     i--;
+//   }
+// }
 
-console.log(personalMovieDB);
+// console.log(personalMovieDB);
 
 
 // let i = 0;
@@ -144,7 +144,7 @@ function calculateVolumeAndArea(length) {
   }
   return(`Объем куба: ${cubeVolume}, площадь всей поверхности: ${cubeArea}`);
 }
-calculateVolumeAndArea();
+console.log(calculateVolumeAndArea(12));
 
 
 function getCoupeNumber(seatNumber) {
@@ -160,7 +160,7 @@ function getCoupeNumber(seatNumber) {
     return Math.ceil(seatNumber / i);
   }
 }
-console.log(getCoupeNumber(13));
+console.log(getCoupeNumber(23));
 
 
 // Преобразует число в x часов и y минут
@@ -229,3 +229,210 @@ function fib(num) {
 }
 
 console.log(fib(6));
+
+
+
+
+// CallBack функция
+
+function first (lang, callback) {
+  console.log(`Я учу ${lang}`);
+  callback();
+}
+
+function two () {
+  console.log('И я его выучу!');
+}
+
+first('JavaScript', two);
+
+
+// Создаем объект и в нем создаем свой метод, который потом можем вызвать
+const obj = {
+  name: 'test',
+  height: 1024,
+  width: 1024,
+  colors: {
+    border: 'black',
+    bg: 'red'
+  },
+  makeTest: function() {
+    console.log('test');
+  }
+};
+
+
+obj.makeTest();
+
+// Деструктуризая объекта
+const {border, bg} = obj.colors;
+console.log(border);
+
+// Создаем массив из ключей объекта и узнаем его длину
+console.log(Object.keys(obj));
+console.log(Object.keys(obj).length);
+
+
+// Перебор объекта КЛЮЧ - ЗНАЧЕНИЕ только на первом уровне
+for (let key in obj) {
+  console.log(obj[key]);
+}
+
+// Перебор объекта КЛЮЧ - ЗНАЧЕНИЕ
+for (let key in obj) {
+  if (typeof(obj[key]) === 'object') {
+    for (let i in obj[key]) {
+      console.log(`Свойство ${i} имеет значение ${obj[key][i]}`);
+    } 
+  } else {
+      console.log(`Свойство ${key} имеет значение ${obj[key]}`);
+    }
+}
+
+
+
+// Работа с массивами
+
+const arr = [1, 22, 3, 14, 5, 6];
+
+console.log(arr.sort(compareNum));
+
+function compareNum(a, b) {
+  return a - b;
+}
+
+// Удаляет последний эллемент массива
+arr.pop();
+
+// // Добавляет эллемент в конец массива
+arr.push(7);
+
+// Перебор массива через обычный цикл и через конструкцию for of
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+
+for (let value of arr) { 
+    console.log(value);
+}
+
+// Перебор массива через forEach
+const array = [1, 2, 5, 7, 9];
+
+array.forEach(function(item, i, array) {
+  console.log(`${i}: ${item} внутри массива ${array}`);
+});
+
+
+
+const str = prompt('', '');
+const products = str.split(', ');  // Превращение строки в массив
+products.sort();  // Сортрировка массива
+
+console.log(products.join('; '));  // Превращение массива в строку
+
+
+
+// Копия объекта
+
+function copy(mainObj) {
+  let copyObj = {};
+
+  let key;
+  for(key in mainObj) {
+    copyObj[key] = mainObj[key];
+  }
+
+  return copyObj;
+}
+
+const numberObj = {
+  a: 1,
+  b: 3,
+  c: {
+    x: 10,
+    y: 15
+  }
+};
+
+const newNuberObj = copy(numberObj);
+
+newNuberObj.a = 10;
+
+console.log(newNuberObj);
+console.log(numberObj);
+
+
+// Объеденение объектов
+
+const masterObj = {
+  a: 1,
+  b: 2
+};
+
+const addObj = {
+  c: 3,
+  d: 4
+};
+console.log(Object.assign(masterObj, addObj));
+
+
+// Копия объекта 
+const copyObj = Object.assign({}, addObj);
+
+copyObj.c = 5;
+console.log(copyObj);
+
+
+// Копия массива
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();
+
+newArray[1] = 'asdasdasd';
+
+console.log(oldArray);
+console.log(newArray);
+
+
+// Spread оператор ES6-ES8. Развернуть массив
+
+const video = ['youtube', 'vimeo'],
+      blogs = ['wordpress', 'livejournal'],
+      internet = [...video, ...blogs, 'vk', 'facebook'];
+
+console.log(internet);
+
+
+
+
+const objectNew = {
+  one: 1,
+  two: 2
+};
+
+const objectCopy = {...objectNew};
+
+console.log(objectCopy);
+
+
+
+// Протиотипно-ориентированное наследование
+
+const soldier = {
+  health: 400,
+  armor: 100,
+  sayHello: function() {
+    console.log('Hello');
+  }
+};
+
+const john = Object.create(soldier);
+
+// const john = {
+//   health: 100
+// };
+
+// Object.setPrototypeOf(john, soldier);
+
+john.sayHello();

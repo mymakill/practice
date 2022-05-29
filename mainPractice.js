@@ -20,7 +20,8 @@ let personalMovieDB = {
   movies: {},
   actors: {},
   genres: [],
-  private: false
+  private: false,
+  
 };
 
 // Вызывает форму ввода. Проверяет введенные данные. Если пользователь ввел
@@ -28,7 +29,7 @@ let personalMovieDB = {
 // записать ответы в объект. Иначе повторять вопросы.
 function rememberMyFilms() {
   for (let i = 0; i < 2; i++) {
-    const answearMovie = prompt('Один из последних просмотренных фильмов?', ''),
+    const answearMovie = prompt('Один из последних просмотренных фильмов?', '').trim(),
           answerGoal = prompt('На сколько оцените его?', '');
   
     if (answearMovie != null && answerGoal != null && answearMovie != '' && answerGoal != '' && answearMovie.length < 50) {

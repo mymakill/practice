@@ -1,119 +1,128 @@
-/* Задание на урок:
-
-1) Создать переменную numberOfFilms и в неё поместить ответ от пользователя на вопрос:
-'Сколько фильмов вы уже посмотрели?'
-
-2) Создать объект personalMovieDB и в него поместить такие свойства:
-    - count - сюда передается ответ на первый вопрос
-    - movies - в это свойство поместить пустой объект
-    - actors - тоже поместить пустой объект
-    - genres - сюда поместить пустой массив
-    - privat - в это свойство поместить boolean(логическое) значение false
-
-3) Задайте пользователю по два раза вопросы:
-    - 'Один из последних просмотренных фильмов?'
-    - 'На сколько оцените его?'
-Ответы стоит поместить в отдельные переменные
-Записать ответы в объект movies в формате: 
-    movies: {
-        'logan': '8.1'
+const personalPlanPeter = {
+    name: "Peter",
+    age: "29",
+    skills: {
+        languages: ['ru', 'eng'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs: function(plan) {
+        const {age} = plan;
+        const {languages} = plan.skills;
+        let str = `Мне ${age} лет и я владею языками: `;
+        
+        languages.forEach(function(item) {
+            str += `${item.toUpperCase()} `;
+        });
+        return str;
     }
-
-Проверить, чтобы все работало без ошибок в консоли */
-
-"use strict";
-
-let numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-let answearOneMovie = prompt('Один из последних просмотренных фильмов?', ''),
-    answerOneGoal = prompt('На сколько оцените его?', ''),
-    answearTwoMovie = prompt('Один из последних просмотренных фильмов?', ''),
-    answerTwoGoal = prompt('На сколько оцените его?', '');
-
-let personalMovieDB = {
-  count: numberOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  private: false
 };
 
-personalMovieDB.movies[answearOneMovie] = answerOneGoal;
-personalMovieDB.movies[answearTwoMovie] = answerTwoGoal;
-console.log (personalMovieDB);
+console.log(personalPlanPeter.showAgeAndLangs(personalPlanPeter)); 
 
 
-// Вложенность циклов или цикл в цикле
-// *
-// **
-// ***
-// ****
-// *****
-// ******
 
-// let result = '';
-// const lenght = 7;
+function showProgrammingLangs(plan) {
+    let str = '';
 
-// for (let i = 1; i < lenght; i++) {
-//     for (let j = 0; j < i; j++) {
-//         result += '*';
-//     }
-//     result += '\n';
-// }
-// console.log (result);
-
-
-// Копирование массива
-function firstTask() {
-    // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
-    const arr = [3, 5, 8, 16, 20, 23, 50];
-    const result = [];
-
-    for (let i = 0; i < arr.length; i++) {
-            result[i] = arr[i]; 
-        }
-        console.log(result);
+    const {programmingLangs} = plan.skills;
+    for(let key in programmingLangs) {
+        str += `Язык ${key} изучен на ${programmingLangs[key]}\n`;
     }
-
-
-// Изменить данный массив так, чтобы все числа были увеличены в 2 раза, а если 
-// попадается строка - прибавить к ней "-done"
-
-    const data = [5, 10, 'Shopping', 20, 'Homework'];
-
-    for (let i = 0; i < data.length; i++) {
-        if (typeof(data[i]) == 'number') {
-            data[i] = data[i] * 2;           
-        } else {
-            data[i] = data[i] + '-done';
-        }    
-    }
-    console.log(data);
-
-
-// Развернуть массив наизнанку
-
-    const firstArr = [5, 10, 'Shopping', 20, 'Homework'];
-    const secondArr = [];
-
-    for (let i = 1; i <= firstArr.length; i++) {
-        secondArr[i - 1] = firstArr[firstArr.length - i]; 
-    }
-    console.log(secondArr);
-
-
-// Нарисовать фигуру 
-
-const lines = 5;
-let result = '';
-
-for (let i = 0; i <= lines; i++) {
-    for (let j = 0; j < lines - i; j++) {
-        result += " ";
-    }
-    for (let j = 0; j < 2 * i + 1; j++) {
-        result += "*";
-    }
-    result += "\n";
+    return str;
 }
 
-console.log(result);
+console.log(showProgrammingLangs(personalPlanPeter));
+
+
+
+function showExperience(personalPlanPeter) {
+    const {exp} = personalPlanPeter.skills;
+
+    return exp;
+}
+
+console.log(showExperience(personalPlanPeter));
+
+// Работа с массивами
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+
+function showFamily(arr) {
+    let str = '';
+
+    arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
+
+    arr.forEach(function(members) {
+        str += `${members} `;
+    });
+    return str;
+}
+ console.log(showFamily(family));
+
+
+
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+
+    arr.forEach(function(item) {
+        console.log(item.toLowerCase());
+    });
+}
+
+standardizeStrings(favoriteCities);
+
+
+// Перевернуть строку
+const someString = 'This is some strange string';
+
+function reverse(str) {
+    if(typeof(str) !== 'string') {
+        return 'Ошибка';
+    }
+
+    return str.split('').reverse().join('');
+
+    // Решение при помощи цикла
+    // let newStr = '';
+    // for (let i = str.length - 1; i >= 0; i--) {
+    //     newStr += str[i];
+    // }
+    // return newStr
+}
+
+console.log(reverse(someString));
+
+
+
+
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+    let str = '';
+    arr.length === 0 ? str = 'Нет доступных валют' : str = 'Доступные валюты:\n';
+
+    arr.forEach(function(curr, i) {
+        if (curr !== missingCurr) {
+            str += `${curr}\n`;
+        }
+    });
+
+    // Или
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] === missingCurr) {
+    //         continue;
+    //     }
+    //     str += `${arr[i]}\n`;
+    // }
+
+    return str;
+}
+
+console.log(availableCurr());
