@@ -436,3 +436,7 @@ const john = Object.create(soldier);
 // Object.setPrototypeOf(john, soldier);
 
 john.sayHello();
+
+
+
+
